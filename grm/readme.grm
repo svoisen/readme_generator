@@ -13,7 +13,7 @@ DESCRIPTION1 ::= (
 );
 
 DESCRIPTION2 ::= (
-"It uses" FRAMEWORK
+"It uses"
 );
 
 DESIGNVERB ::= ("designed" | "optimized" | "created");
