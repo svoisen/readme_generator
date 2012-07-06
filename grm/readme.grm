@@ -1,0 +1,86 @@
+I ::= "title: README generator";
+
+S ::= (INTRODUCTION);
+
+INTRODUCTION ::= (DESCRIPTION);
+
+DESCRIPTION ::= (DESCRIPTION1 DESCRIPTION2);
+
+DESCRIPTION1 ::= (
+"#name# is a" PROJECTADJ1 [^"," PROJECTADJ2] [^"," PROJECTADJ3] PROJECTTYPE DESIGNVERB "for" TECHTYPE BUILDVERB ("in" | "using") PROGRAMMINGLANG^"." |
+"A" PROJECTADJ2 [^"," PROJECTADJ1] [^"," PROJECTADJ3] PROJECTTYPE BUILDVERB "in" PROGRAMMINGLANG^"," "#name# is" DESIGNVERB "exclusively for" TECHTYPE^"." |
+"#name# is a" PROJECTADJ3 [^"," PROJECTADJ2] PROJECTTYPE "for" TECHTYPE^"."
+);
+
+DESCRIPTION2 ::= (
+"It uses" FRAMEWORK
+);
+
+DESIGNVERB ::= ("designed" | "optimized" | "created");
+BUILDVERB ::= ("written" | "built" | "programmed" | "coded" | "created");
+
+PROJECTTYPE ::= (
+"audio API" |
+"MVC micro-framework" |
+"templating system" |
+"data visualization library" |
+"jQuery plug-in" |
+"object relational mapping system" |
+"DSL" |
+"key-value store" |
+"UI widget library" |
+"package manager" | 
+"web framework" |
+"parsing and serialization library" |
+"memory profiler" |
+"continuous integration testing framework" |
+"unit testing framework" |
+"static site generator" |
+"programming language" |
+"payment system abstraction library" |
+"authentication solution" |
+"administration framework" |
+"in-memory database" |
+"CMS framework" |
+"file upload widget" |
+"presentation framework" |
+"3D library" |
+"web development framework"
+);
+
+TECHTYPE ::= (
+"Rails" | "Padrino" | "Node.js" | "Django" | "MongoDB" | "WebGL" | "CSS3" | "Phusion Passenger" | "Google's V8 Engine" |
+"Apache Solr" | "PhoneGap (Cordova)" | "Apache Cassandra" | "Apache Flex" | "Sinatra"
+);
+
+PROGRAMMINGLANG ::= (
+"C" | "C++" | "Haskell" | "Python" | "Ruby" | "Clojure" | "Java" | "JavaScript" | "ActionScript" |
+"CoffeeScript" | "Objectiv-C" | "Emacs Lisp" | "Perl" | "Erlang" | "OCaml" | "Lisp" | "Go" | "Scala" |
+"ClojureScript" | "PHP" );
+
+PROJECTADJ1 ::= (
+"realtime" | 
+"flexible" | 
+"community-driven" | 
+"high-level" | 
+"REST-like" | 
+"REST-based" |
+"highly-portable" |
+"popular" |
+"open-source" |
+"RESTful"
+);
+
+PROJECTADJ2 ::= (
+"dynamic" |
+"easy-to-use" |
+"device-optimized" |
+"locally-executing" |
+"lightweight"
+);
+
+PROJECTADJ3 ::= (
+"multi-threaded" |
+"high-performance" |
+"modular" 
+);
