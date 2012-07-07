@@ -4,11 +4,11 @@ S ::= (INTRODUCTION);
 
 INTRODUCTION ::= (DESCRIPTION);
 
-DESCRIPTION ::= (DESCRIPTION1 DESCRIPTION2);
+DESCRIPTION ::= ("Description\n-----------\n" DESCRIPTION1 DESCRIPTION2);
 
 DESCRIPTION1 ::= (
-"#name# is a" PROJECTADJ1 [^"," PROJECTADJ2] [^"," PROJECTADJ3] PROJECTTYPE DESIGNVERB "for" TECHTYPE BUILDVERB ("in" | "using") PROGRAMMINGLANG^"." |
-"A" PROJECTADJ2 [^"," PROJECTADJ1] [^"," PROJECTADJ3] PROJECTTYPE BUILDVERB "in" PROGRAMMINGLANG^"," "#name# is" DESIGNVERB "exclusively for" TECHTYPE^"." |
+"#name# is a" PROJECTADJ1 [^"," PROJECTADJ2] [^"," PROJECTADJ3] PROJECTTYPE DESIGNVERB "for" TECHTYPE "and" BUILDVERB ("in" | "using") PROGRAMMINGLANG^"." |
+"A" PROJECTADJ2 [^"," PROJECTADJ1] [^"," PROJECTADJ3] PROJECTTYPE BUILDVERB "in" PROGRAMMINGLANG^"," "#name# is" DESIGNVERB ["exclusively"] "for" TECHTYPE^"." |
 "#name# is a" PROJECTADJ3 [^"," PROJECTADJ2] PROJECTTYPE "for" TECHTYPE^"."
 );
 
@@ -17,7 +17,7 @@ DESCRIPTION2 ::= (
 );
 
 DESIGNVERB ::= ("designed" | "optimized" | "created");
-BUILDVERB ::= ("written" | "built" | "programmed" | "coded" | "created");
+BUILDVERB ::= ("written" | "built" | "programmed" | "coded");
 
 PROJECTTYPE ::= (
 "audio API" |
@@ -55,7 +55,7 @@ TECHTYPE ::= (
 
 PROGRAMMINGLANG ::= (
 "C" | "C++" | "Haskell" | "Python" | "Ruby" | "Clojure" | "Java" | "JavaScript" | "ActionScript" |
-"CoffeeScript" | "Objectiv-C" | "Emacs Lisp" | "Perl" | "Erlang" | "OCaml" | "Lisp" | "Go" | "Scala" |
+"CoffeeScript" | "Objective-C" | "Emacs Lisp" | "Perl" | "Erlang" | "OCaml" | "Lisp" | "Go" | "Scala" |
 "ClojureScript" | "PHP" );
 
 PROJECTADJ1 ::= (

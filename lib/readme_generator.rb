@@ -1,6 +1,14 @@
+require 'redcarpet'
+
 class ReadmeGenerator
+  attr_accessor :markdown
+
+  def initialize
+    @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)
+  end
+
   def generate(name)
-    substitute(`polygen #{grammar_file}`, {"#name#" => name})
+    @markdown.render(substitute(`polygen #{grammar_file}`, {"#name#" => name}))
   end
 
   protected
