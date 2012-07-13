@@ -1,23 +1,46 @@
 I ::= "title: README generator";
 
-S ::= (INTRODUCTION);
+S ::= (INTRODUCTION^FEATURES^REQUIREMENTS);
 
 INTRODUCTION ::= (DESCRIPTION);
 
-DESCRIPTION ::= ("Description\n-----------\n" DESCRIPTION1 DESCRIPTION2);
+DESCRIPTION ::= ("Description\n-----------\n" DESCRIPTION1 DESCRIPTION2 "\n\n");
+
+FEATURES ::= ("Features\n--------\n" "*" FEATURES1 "\n\n");
+
+REQUIREMENTS ::= ("Requirements\n------------\n" "*" REQUIREMENTS1 "\n\n");
 
 DESCRIPTION1 ::= (
-"#name# is a" PROJECTADJ1 [^"," PROJECTADJ2] [^"," PROJECTADJ3] PROJECTTYPE DESIGNVERB "for" TECHTYPE "and" BUILDVERB ("in" | "using") PROGRAMMINGLANG^"." |
-"A" PROJECTADJ2 [^"," PROJECTADJ1] [^"," PROJECTADJ3] PROJECTTYPE BUILDVERB "in" PROGRAMMINGLANG^"," "#name# is" DESIGNVERB ["exclusively"] "for" TECHTYPE^"." |
-"#name# is a" PROJECTADJ3 [^"," PROJECTADJ2] PROJECTTYPE "for" TECHTYPE^"."
+"#name# is a" PROJECTADJ1 [^"," PROJECTADJ2] [^"," PROJECTADJ3] PROJECTTYPE PASTBUILDVERB1 "for" FRAMEWORK "and" PASTBUILDVERB2 ("in" | "using") PROGRAMMINGLANG^"." |
+"A" PROJECTADJ2 [^"," PROJECTADJ1] [^"," PROJECTADJ3] PROJECTTYPE PASTBUILDVERB2 "in" PROGRAMMINGLANG^"," "#name# is" PASTBUILDVERB1 ["exclusively"] "for" FRAMEWORK^"." |
+"#name# is a" PROJECTADJ3 [^"," PROJECTADJ2] PROJECTTYPE "for" FRAMEWORK^"."
 );
 
 DESCRIPTION2 ::= (
-"It uses"
+"It uses" |
+"It is intended to be used" ("with" [TECH1 "and"] TECH2 ["to" BUILDVERB RESULTTYPE])^"." |
+"Use it to" |
+"#name# allows you to" BUILDVERB RESULTTYPE^"."
 );
 
-DESIGNVERB ::= ("designed" | "optimized" | "created");
-BUILDVERB ::= ("written" | "built" | "programmed" | "coded");
+FEATURES1 ::= (
+"Web-based" |
+"Supports offline caching" |
+"Low latency"
+);
+
+REQUIREMENTS1 ::= (
+"g++ 4.4 or clang++ 3.x" |
+"Python 2.6" ["or later"] |
+"Perl 5.0" ["or later"] |
+"curl" |
+"Ruby 1.9.2"
+);
+
+BUILDVERB ::= ("design" | "build" | "create");
+ENABLEVERB ::= ("enable");
+PASTBUILDVERB1 ::= ("designed" | "optimized" | "created");
+PASTBUILDVERB2 ::= ("written" | "built" | "programmed" | "coded");
 
 PROJECTTYPE ::= (
 "audio API" |
@@ -45,12 +68,27 @@ PROJECTTYPE ::= (
 "file upload widget" |
 "presentation framework" |
 "3D library" |
-"web development framework"
+"web development framework" |
+"HTML5 canvas library"
 );
 
-TECHTYPE ::= (
+RESULTTYPE ::= (
+("simulated" | "polymorphic") 
+("network environments" | "virtual machines" | "interactive experiments")
+["for mobile" ["and desktop"] "environments"]
+);
+
+FRAMEWORK ::= (
 "Rails" | "Padrino" | "Node.js" | "Django" | "MongoDB" | "WebGL" | "CSS3" | "Phusion Passenger" | "Google's V8 Engine" |
 "Apache Solr" | "PhoneGap (Cordova)" | "Apache Cassandra" | "Apache Flex" | "Sinatra"
+);
+
+TECH1 ::= (
+"JSON" | "BSON" | "YAML" | "HAML" | "Handlebars templates" | "Backbone.js" | "Ember.js"
+);
+
+TECH2 ::= (
+"HTML" | "CSS3"
 );
 
 PROGRAMMINGLANG ::= (
